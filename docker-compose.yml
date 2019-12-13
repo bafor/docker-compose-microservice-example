@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+      image: php:7.4-cli
+      ports:
+          - "8020:8000"
+      volumes:
+        - ./microservices/app:/app
+      command: php -S 0.0.0.0:8000 /app/index.php
+  timer:
+      image: php:7.4-cli
+      volumes:
+          - ./microservices/timer:/app
+      command: php -S 0.0.0.0:8000 /app/index.php
